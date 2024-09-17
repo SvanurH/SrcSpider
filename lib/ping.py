@@ -17,9 +17,11 @@ class Ping:
         domain = item['company_domain']
         company_id = item['company_id']
         res = ping(domain, size=1024, timeout=2)
+        s = Storge(self.db_path)
         if res:
-            s = Storge(self.db_path)
             s.update_check_domain(company_id, True)
+        else:
+            s.update_check_domain(company_id, False)
         self.lock.release()
 
     def start_ping(self, datas):
