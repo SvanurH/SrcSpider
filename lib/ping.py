@@ -10,7 +10,7 @@ from lib.storge import Storge
 
 class Ping:
     def __init__(self,db_path='lib/company.db'):
-        self.lock = threading.Semaphore(30)
+        self.lock = threading.Semaphore(100)
         self.db_path = db_path
 
     def ping(self, item):
